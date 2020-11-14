@@ -1,0 +1,14 @@
+{
+  "name": "yt-thumbnails-fixer",
+  "version": "0.6.0",
+  "description": "Restores old thumbnails on YouTube",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc --project tsconfig.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.0.5"
+  }
+}
