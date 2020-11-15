@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         YouTube Normal Thumbnails
 // @namespace    http://greasyfork.org
-// @version      0.6.0
+// @version      0.6.1
 // @description  Restores normal thumbnails size
 // @author       NeoCortex
 // @match        *://www.youtube.com/*
+// @match        *://youtube.com/*
 // @run-at       document-end
 // @grant        none
 // ==/UserScript==
