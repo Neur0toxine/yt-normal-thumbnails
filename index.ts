@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Normal Thumbnails
 // @namespace    http://greasyfork.org
-// @version      0.6.1
+// @version      0.7.0
 // @description  Restores normal thumbnails size
 // @author       NeoCortex
 // @match        *://www.youtube.com/*
@@ -23,6 +23,12 @@
         display: none !important;
     }
     `.trim();
+    const commonStyles = `
+    ytd-video-renderer[use-prominent-thumbs] ytd-thumbnail.ytd-video-renderer {
+        min-width: 120px !important;
+        max-width: 240px !important;
+    }
+    `.trim();
 
     class YoutubeThumbnailsFixer {
         private oldPerRow?: number;
@@ -36,6 +42,7 @@
 
         constructor() {
             this.installContentObserver();
+            this.installStyle(commonStyles);
         }
 
         private installContentObserver(): void {
@@ -44,7 +51,7 @@
 
                 if (null !== this.target) {
                     this.observer?.disconnect();
-                    this.installStyle();
+                    this.installStyle(styleContent);
                     this.updateRowsCount();
                     this.installVideoGridObserver();
                 }
@@ -89,9 +96,9 @@
             }
         }
 
-        private installStyle(): void {
+        private installStyle(contents: string): void {
             let style = document.createElement('style');
-            style.innerHTML = styleContent;
+            style.innerHTML = contents;
             document.body.appendChild(style);
         }
 
